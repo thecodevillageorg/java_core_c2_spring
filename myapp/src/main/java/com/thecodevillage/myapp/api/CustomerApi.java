@@ -2,6 +2,7 @@ package com.thecodevillage.myapp.api;
 
 
 import com.thecodevillage.myapp.models.Customer;
+import com.thecodevillage.myapp.pojo.CustomerUploadReq;
 import com.thecodevillage.myapp.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 public class CustomerApi {
-
     private BankService bankService;
 
     @Autowired
@@ -46,8 +46,16 @@ public class CustomerApi {
     public ResponseEntity getAllCustomersFromDb(){
         System.out.println("Customer API FROM DB Called# ");
         List<Customer> customers=bankService.getCustomers();
-        return new ResponseEntity<>(bankService.getCustomers(), HttpStatus.OK);
+        return new ResponseEntity<>(customers, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/all/db/manual",method = RequestMethod.GET)
+    public ResponseEntity getAllCustomersFromDbManual(){
+        System.out.println("Customer API FROM DB Manual Called# ");
+        List<Customer> customers=bankService.getCustomersManual();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
 
     @RequestMapping(value = "/create",method = RequestMethod.POST)
     public ResponseEntity createCustomer(@RequestBody Customer customer){
@@ -55,6 +63,19 @@ public class CustomerApi {
 
         System.out.println("Name: "+customer.getFullName());
         return new ResponseEntity<>(bankService.saveCustomer(customer), HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public ResponseEntity updateCustomer(@RequestBody Customer customer){
+        System.out.println("Update Customer in DB Called# ");
+        return new ResponseEntity<>(bankService.updateCustomer(customer), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/update/bulk",method = RequestMethod.POST)
+    public ResponseEntity updateCustomerBulk(@RequestBody CustomerUploadReq customerUploadReq){
+        System.out.println("Update Customer in DB Called# ");
+        return new ResponseEntity<>(bankService.updateCustomerBulk(customerUploadReq), HttpStatus.OK);
     }
 
 }
