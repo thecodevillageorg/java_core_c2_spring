@@ -1,10 +1,10 @@
 package com.thecodevillage.myapp.service;
 
-import com.thecodevillage.myapp.models.Customer;
+import com.thecodevillage.myapp.customer.models.Customer;
 import com.thecodevillage.myapp.pojo.CustomerUploadReq;
-import com.thecodevillage.myapp.repositories.CurrencyRepository;
-import com.thecodevillage.myapp.repositories.CustomerRepository;
-import com.thecodevillage.myapp.repositories.MyBankAppRepository;
+import com.thecodevillage.myapp.customer.repositories.CurrencyRepository;
+import com.thecodevillage.myapp.customer.repositories.CustomerRepository;
+import com.thecodevillage.myapp.customer.repositories.MyBankAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

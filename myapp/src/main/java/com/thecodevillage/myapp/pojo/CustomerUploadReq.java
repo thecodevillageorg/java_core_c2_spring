@@ -1,6 +1,6 @@
 package com.thecodevillage.myapp.pojo;
 
-import com.thecodevillage.myapp.models.Customer;
+import com.thecodevillage.myapp.customer.models.Customer;
 
 import java.io.Serializable;
 import java.util.List;

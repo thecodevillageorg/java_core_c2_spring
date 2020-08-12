@@ -1,7 +1,6 @@
-package com.thecodevillage.myapp.repositories;
+package com.thecodevillage.myapp.customer.repositories;
 
-import com.thecodevillage.myapp.models.Customer;
-import org.springframework.data.jpa.repository.Query;
+import com.thecodevillage.myapp.customer.models.Customer;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 

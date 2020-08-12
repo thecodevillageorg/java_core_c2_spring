@@ -1,6 +1,6 @@
-package com.thecodevillage.myapp.repositories;
+package com.thecodevillage.myapp.customer.repositories;
 
-import com.thecodevillage.myapp.models.Currency;
+import com.thecodevillage.myapp.customer.models.Currency;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface CurrencyRepository extends PagingAndSortingRepository<Currency,Long> {
