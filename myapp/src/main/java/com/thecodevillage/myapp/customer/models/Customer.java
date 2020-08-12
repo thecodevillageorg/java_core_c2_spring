@@ -1,4 +1,4 @@
-package com.thecodevillage.myapp.models;
+package com.thecodevillage.myapp.customer.models;
 
 
 import javax.persistence.*;

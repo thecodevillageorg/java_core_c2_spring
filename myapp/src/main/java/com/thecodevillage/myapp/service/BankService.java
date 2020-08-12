@@ -1,6 +1,6 @@
 package com.thecodevillage.myapp.service;
 
-import com.thecodevillage.myapp.models.Customer;
+import com.thecodevillage.myapp.customer.models.Customer;
 import com.thecodevillage.myapp.pojo.CustomerUploadReq;
 
 import java.util.List;

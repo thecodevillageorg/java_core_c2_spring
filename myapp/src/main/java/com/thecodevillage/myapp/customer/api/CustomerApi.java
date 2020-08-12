@@ -1,7 +1,7 @@
-package com.thecodevillage.myapp.api;
+package com.thecodevillage.myapp.customer.api;
 
 
-import com.thecodevillage.myapp.models.Customer;
+import com.thecodevillage.myapp.customer.models.Customer;
 import com.thecodevillage.myapp.pojo.CustomerUploadReq;
 import com.thecodevillage.myapp.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
