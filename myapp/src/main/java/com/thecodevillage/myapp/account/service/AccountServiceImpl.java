@@ -45,9 +45,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account saveAccount(Account account) {
-        Optional<Customer> optionalCustomer=customerRepository.findById(account.getCustomerId());
-        if (optionalCustomer.isPresent())
-            return accountRepository.save(account);
-        return null;
+
+        return accountRepository.save(account);
+//        Optional<Customer> optionalCustomer=customerRepository.findById(account.getCustomer().getId());
+//        if (optionalCustomer.isPresent())
+//            return accountRepository.save(account);
+//        return null;
     }
 }

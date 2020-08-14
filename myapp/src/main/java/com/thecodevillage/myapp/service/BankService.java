@@ -2,22 +2,24 @@ package com.thecodevillage.myapp.service;
 
 import com.thecodevillage.myapp.customer.models.Customer;
 import com.thecodevillage.myapp.pojo.CustomerUploadReq;
+import com.thecodevillage.myapp.pojo.GenericResponse;
 
 import java.util.List;
 
 public interface BankService {
-    List<Customer> getCustomers();
+    GenericResponse getCustomers();
 
-    List<Customer> getCustomersManual();
+    GenericResponse getCustomersManual();
 
     Customer getCustomerByIdNumber(String idNumber);
 
-    Customer saveCustomer(Customer customer);
+    GenericResponse saveCustomer(Customer customer);
 
+    GenericResponse getCustomerById(Long id);
 
-    Customer updateCustomer(Customer customer);
+    GenericResponse updateCustomer(Customer customer);
 
-    CustomerUploadReq updateCustomerBulk(CustomerUploadReq customerUploadReq);
+    GenericResponse updateCustomerBulk(CustomerUploadReq customerUploadReq);
 
 
 

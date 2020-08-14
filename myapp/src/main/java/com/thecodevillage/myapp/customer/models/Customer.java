@@ -3,6 +3,7 @@ package com.thecodevillage.myapp.customer.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -17,6 +18,11 @@ public class Customer implements Serializable {
     private String idNumber;
 
     private String fullName;
+
+
+    //@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    //@JoinColumn(name = "customer_id",referencedColumnName = "id")
+    //private List<Account> accounts;
 
     public Customer() {
     }
@@ -50,4 +56,5 @@ public class Customer implements Serializable {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
 }

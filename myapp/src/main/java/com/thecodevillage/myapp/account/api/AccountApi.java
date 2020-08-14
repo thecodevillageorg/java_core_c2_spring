@@ -5,6 +5,7 @@ import com.thecodevillage.myapp.account.service.AccountService;
 import com.thecodevillage.myapp.customer.models.Account;
 import com.thecodevillage.myapp.customer.models.Customer;
 import com.thecodevillage.myapp.pojo.CustomerUploadReq;
+import com.thecodevillage.myapp.pojo.GenericResponse;
 import com.thecodevillage.myapp.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,15 +34,16 @@ public class AccountApi {
     @RequestMapping(value = "/all/db",method = RequestMethod.GET)
     public ResponseEntity getAllCustomersFromDb(){
         System.out.println("Customer API FROM DB Called# ");
-        List<Customer> customers=bankService.getCustomers();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
+
+        GenericResponse genericResponse=bankService.getCustomers();
+        return new ResponseEntity<>(genericResponse, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/all/db/manual",method = RequestMethod.GET)
     public ResponseEntity getAllCustomersFromDbManual(){
         System.out.println("Customer API FROM DB Manual Called# ");
-        List<Customer> customers=bankService.getCustomersManual();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
+        GenericResponse genericResponse=bankService.getCustomersManual();
+        return new ResponseEntity<>(genericResponse, HttpStatus.OK);
     }
 
 
