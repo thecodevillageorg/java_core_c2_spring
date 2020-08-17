@@ -3,17 +3,16 @@ package com.thecodevillage.myapp.customer.api;
 
 import com.thecodevillage.myapp.customer.models.Customer;
 import com.thecodevillage.myapp.pojo.CustomerUploadReq;
+import com.thecodevillage.myapp.pojo.GenericResponse;
 import com.thecodevillage.myapp.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/customer")
@@ -42,18 +41,35 @@ public class CustomerApi {
     }
 
 
-    @RequestMapping(value = "/all/db",method = RequestMethod.GET)
-    public ResponseEntity getAllCustomersFromDb(){
-        System.out.println("Customer API FROM DB Called# ");
-        List<Customer> customers=bankService.getCustomers();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
-    }
+
 
     @RequestMapping(value = "/all/db/manual",method = RequestMethod.GET)
     public ResponseEntity getAllCustomersFromDbManual(){
         System.out.println("Customer API FROM DB Manual Called# ");
-        List<Customer> customers=bankService.getCustomersManual();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
+        GenericResponse genericResponse=bankService.getCustomersManual();
+        return new ResponseEntity<>(genericResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/single/db",method = RequestMethod.GET)
+    public ResponseEntity getCustomerById(@RequestParam Long id){
+        System.out.println("Single Customer API FROM DB Called# ");
+        GenericResponse genericResponse=bankService.getCustomerById(id);
+        return new ResponseEntity<>(genericResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/single/dbb",method = RequestMethod.GET)
+    public ResponseEntity getCustomerByIdd(@RequestParam(name = "id") Long id,@RequestParam(name = "code") String code){
+        System.out.println("Single Customer API FROM DB Called# ");
+        GenericResponse genericResponse=bankService.getCustomerById(id);
+        return new ResponseEntity<>(genericResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/single/dbbb",method = RequestMethod.GET)
+    public ResponseEntity getCustomerByIddd(@RequestParam Map<String,String> params){
+        System.out.println(params.entrySet());
+
+        //GenericResponse genericResponse=bankService.getCustomerById(id);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
 
@@ -76,6 +92,14 @@ public class CustomerApi {
     public ResponseEntity updateCustomerBulk(@RequestBody CustomerUploadReq customerUploadReq){
         System.out.println("Update Customer in DB Called# ");
         return new ResponseEntity<>(bankService.updateCustomerBulk(customerUploadReq), HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/byidnumber",method = RequestMethod.GET)
+    public ResponseEntity getCustomerByIdNo(@RequestParam String id){
+        System.out.println("Single Customer API FROM DB Called# ");
+        GenericResponse genericResponse=bankService.findCustomerByIdNumber(id);
+        return new ResponseEntity<>(genericResponse, HttpStatus.OK);
     }
 
 }

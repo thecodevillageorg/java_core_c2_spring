@@ -5,20 +5,23 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "account")
-@NamedQueries({
-        @NamedQuery(name = "Account.findByCustomerId",query = "select a from Account a where a.customerId= :customerId and a.id= :accountId")
-})
+//@NamedQueries({
+//        @NamedQuery(name = "Account.findByCustomerId",query = "select a from Account a where a.customer_id= :customerId and a.id= :accountId")
+//})
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(insertable = false,updatable = false)
     private Long id;
 
     private String accountNumber;
 
     private Long accountType;
 
-    private Long customerId;
-
+    //foreign keys
+    //@ManyToOne(optional = false,fetch = FetchType.LAZY)
+    //@JoinColumn(name = "customer_id",referencedColumnName = "id")
+    private Customer customer;
 
     public Long getId() {
         return id;
@@ -44,11 +47,11 @@ public class Account {
         this.accountType = accountType;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

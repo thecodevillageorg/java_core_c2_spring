@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface AccountRepository extends PagingAndSortingRepository<Account,Long> {
 
     //named query
-    Optional<Account> findByCustomerId(@Param("customerId") Long customerId,@Param("accountId") Long accountId);
+    //Optional<Account> findByCustomerId(@Param("customerId") Long customerId,@Param("accountId") Long accountId);
 
 
 
