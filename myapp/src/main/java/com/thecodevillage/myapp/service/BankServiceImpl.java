@@ -8,7 +8,6 @@ import com.thecodevillage.myapp.customer.repositories.MyBankAppRepository;
 import com.thecodevillage.myapp.pojo.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -47,8 +46,8 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Customer getCustomerByIdNumber(String idNumber) {
-        return null;
+    public GenericResponse findCustomerByIdNumber(String idNumber) {
+        return new GenericResponse(200,"OK",customerRepository.findByIdNumber(idNumber).get());
     }
 
     @Override

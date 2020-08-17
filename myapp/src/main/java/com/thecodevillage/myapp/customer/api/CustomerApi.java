@@ -94,6 +94,14 @@ public class CustomerApi {
         return new ResponseEntity<>(bankService.updateCustomerBulk(customerUploadReq), HttpStatus.OK);
     }
 
+
+    @RequestMapping(value = "/byidnumber",method = RequestMethod.GET)
+    public ResponseEntity getCustomerByIdNo(@RequestParam String id){
+        System.out.println("Single Customer API FROM DB Called# ");
+        GenericResponse genericResponse=bankService.findCustomerByIdNumber(id);
+        return new ResponseEntity<>(genericResponse, HttpStatus.OK);
+    }
+
 }
 
 

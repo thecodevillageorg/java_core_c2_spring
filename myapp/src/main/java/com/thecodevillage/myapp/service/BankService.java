@@ -11,7 +11,7 @@ public interface BankService {
 
     GenericResponse getCustomersManual();
 
-    Customer getCustomerByIdNumber(String idNumber);
+    GenericResponse  findCustomerByIdNumber(String idNumber);
 
     GenericResponse saveCustomer(Customer customer);
 
